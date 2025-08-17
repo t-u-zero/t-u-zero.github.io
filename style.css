@@ -1,0 +1,55 @@
+body {
+  background: linear-gradient(to bottom, #fffaf0, #f0e68c);
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+header.ch7 {
+  background-color: #8fbc8f;
+  color: white;
+  padding: 40px 20px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+h1 {
+  font-size: 2.5em;
+  line-height: 1.4;
+  margin: 0;
+}
+
+section {
+  padding: 30px;
+  border-bottom: 1px solid #ccc;
+}
+
+h2 {
+  color: #2e8b57;
+  font-size: 1.8em;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 1.2em;
+  line-height: 1.6;
+}
+
+a {
+  color: #1e90ff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #ff4500;
+}
+
+footer {
+  background-color: #eee;
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9em;
+  color: #555;
+}
