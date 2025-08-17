@@ -18,7 +18,7 @@ hero-header {
   position: relative;
   width: 100%;
   height: 100vh; /* 画面いっぱい */
-  background-image: url("header.png");
+  background-image: url("image/header.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
