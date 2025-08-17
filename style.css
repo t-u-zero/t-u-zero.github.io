@@ -25,13 +25,7 @@ header.ch7 {
   display: flex;
   align-items: center;
   justify-content: center;
-  animation: fadeIn 2s ease-in-out;
-  filter: brightness(0.9)
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  animation: fadeUp 1.5s ease-out forwards;
 }
 
 .overlay {
@@ -73,6 +67,7 @@ h2 {
 p {
   font-size: 1.2em;
   line-height: 1.6;
+  animation: fadeUp 1.5s ease-out forwards;
 }
 
 a {
@@ -91,4 +86,15 @@ footer {
   padding: 20px;
   font-size: 0.9em;
   color: #555;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
