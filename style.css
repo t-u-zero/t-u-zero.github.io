@@ -14,7 +14,7 @@ header.ch7 {
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
-hero-header {
+.hero-header {
   position: relative;
   width: 100%;
   height: 100vh; /* 画面いっぱい */
@@ -27,7 +27,7 @@ hero-header {
   justify-content: center;
 }
 
-overlay {
+.overlay {
   position: absolute;
   text-align: center;
   color: white;
@@ -35,13 +35,13 @@ overlay {
   padding: 20px;
 }
 
-overlay h1 {
+.overlay h1 {
   font-size: 3rem;
   margin-bottom: 10px;
   text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
 }
 
-overlay p {
+.overlay p {
   font-size: 1.5rem;
   text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
 }
