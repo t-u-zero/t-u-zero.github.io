@@ -47,6 +47,14 @@ header.ch7 {
   text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
 }
 
+#intro_typewriter {
+  white-space: pre-line;
+  font-size: 1.3em;
+  color: #4b0082; /* 魔法っぽい紫 */
+  text-shadow: 1px 1px 4px rgba(75, 0, 130, 0.4);
+  animation: fadeUp 1.5s ease-out forwards;
+}
+
 h1 {
   font-size: 2.5em;
   line-height: 1.4;
