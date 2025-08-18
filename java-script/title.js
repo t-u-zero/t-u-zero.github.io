@@ -1,13 +1,17 @@
-const titletext = "てぃ GitHubサイト";
-const target = document.getElementById("title-typewriter");
-let i = 0;
-
 function title_typeWriter() {
-  if (i < titletext.length) {
-    target.textContent += titletext.charAt(i);
-    i++;
-    setTimeout(title_typeWriter, 100); // 表示速度（ms）
+  const titletext = "てぃ GitHubサイト";
+  const target = document.getElementById("title-typewriter");
+  let i = 0;
+
+  function typing() {
+    if (i < titletext.length) {
+      target.textContent += titletext.charAt(i);
+      i++;
+      setTimeout(typing, 100);
+    }
   }
+
+  typing();
 }
 
-title_typeWriter();
+document.addEventListener("DOMContentLoaded", title_typeWriter);
