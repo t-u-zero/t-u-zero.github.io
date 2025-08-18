@@ -41,15 +41,24 @@ function discord_servers_typeWriter() {
         target.appendChild(link);
         target.appendChild(document.createElement("br"));
 
-        // 次のテキスト用に typingSpan を再追加
+        // 次のテキスト用に typingSpan を再追加（最後以外）
         htmlText = "";
         charIndex = 0;
         textIndex++;
-        target.appendChild(typingSpan);
-        setTimeout(typing, 500);
+
+        if (textIndex < texts.length) {
+          target.appendChild(typingSpan);
+          setTimeout(typing, 500);
+        }
+      }
+    } else {
+      // 念のため typingSpan を削除（残ってたら）
+      if (target.contains(typingSpan)) {
+        target.removeChild(typingSpan);
       }
     }
   }
+
   typing();
 }
 
