@@ -1,5 +1,5 @@
 const titletext = "てぃ GitHubサイト";
-const target = document.getElementById("typewriter");
+const target = document.getElementById("title-typewriter");
 let i = 0;
 
 function typeWriter() {
