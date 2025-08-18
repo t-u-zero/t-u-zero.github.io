@@ -50,6 +50,33 @@ header.ch7 {
   text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
 }
 
+#sideMenu {
+  position: fixed;
+  top: 0;
+  left: -250px; /* 初期位置：画面外 */
+  width: 250px;
+  height: 100%;
+  background: rgba(20, 20, 30, 0.95);
+  color: #fff;
+  transition: left 0.4s ease;
+  z-index: 1000;
+  padding-top: 60px;
+}
+
+#sideMenu.open {
+  left: 0; /* 表示位置：画面内 */
+}
+
+#menuToggle {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  font-size: 28px;
+  cursor: pointer;
+  z-index: 1100;
+  color: #fff;
+}
+
 #intro_typewriter {
   white-space: pre-line;
   font-size: 1.3em;
