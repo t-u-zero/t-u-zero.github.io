@@ -1,6 +1,6 @@
 function intro_typeWriter() {
   const text = "名前: てぃ<br>年齢: 17歳<br>好きなもの: 魔法";
-  const target = document.getElementById("intro-typewriter");
+  const target = document.getElementById("intro_typewriter");
   let i = 0;
   let htmlText = "";
 
