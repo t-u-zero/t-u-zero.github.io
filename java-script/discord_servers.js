@@ -46,6 +46,7 @@ function discord_servers_typeWriter() {
   }
 
   typing();
+}
 
 document.addEventListener("DOMContentLoaded", () => {
   const target = document.getElementById("discord_servers_typewriter");
