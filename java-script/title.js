@@ -2,12 +2,12 @@ const titletext = "てぃ GitHubサイト";
 const target = document.getElementById("title-typewriter");
 let i = 0;
 
-function typeWriter() {
+function title_typeWriter() {
   if (i < titletext.length) {
     target.textContent += titletext.charAt(i);
     i++;
-    setTimeout(typeWriter, 100); // 表示速度（ms）
+    setTimeout(title_typeWriter, 100); // 表示速度（ms）
   }
 }
 
-typeWriter();
+title_typeWriter();
