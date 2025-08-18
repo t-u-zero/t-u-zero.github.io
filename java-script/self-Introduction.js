@@ -29,4 +29,4 @@ function intro_typeWriter() {
   typing();
 }
 
-document.addEventListener("DOMContentLoaded", intro_typewriter)
+document.addEventListener("DOMContentLoaded", intro_typewriter);
