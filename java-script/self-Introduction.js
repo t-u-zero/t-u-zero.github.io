@@ -29,4 +29,19 @@ function intro_typeWriter() {
   typing();
 }
 
-document.addEventListener("DOMContentLoaded", intro_typeWriter);
+document.addEventListener("DOMContentLoaded", () => {
+  const target = document.getElementById("intro_typewriter");
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        intro_typeWriter();
+        obs.unobserve(entry.target); // 一度だけ発動
+      }
+    });
+  }, {
+    threshold: 0.6 // 要素が60%以上見えたら発動
+  });
+
+  observer.observe(target);
+});
