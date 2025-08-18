@@ -1,8 +1,8 @@
 function discord_servers_typeWriter() {
   const texts = [
-    "COSMOS<a>",
-    "Fanaria",
-    "Voinich"
+    "<a href=' https://discord.com/invite/AnCywZBabz 'target='_blank'>𝑪𝑶𝑺𝑴𝑶𝑺 𝑺𝑬𝑹𝑽𝑬𝑹</a>",
+    "<a href=' https://discord.com/invite/4jgmAhUmYX 'target='_blank'>💫 𝔽𝕒𝕟𝕒𝕣𝕚𝕒</a>",
+    "<a href=' https://discord.com/invite/SNc8tfc9KC 'target='_blank'>🌏Voynich💻</a>"
   ];
   const target = document.getElementById("discord_servers_typewriter");
   let textIndex = 0;
