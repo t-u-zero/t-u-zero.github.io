@@ -14,11 +14,11 @@ function intro_typeWriter() {
       const currentText = texts[textIndex];
       if (charIndex < currentText.length) {
         htmlText += currentText.charAt(charIndex);
-        target.textContent = htmlText; // ← HTMLタグを避けるため textContent に
+        target.textContent = htmlText;
         charIndex++;
         setTimeout(typing, 100);
       } else {
-        htmlText += "\n"; // ← 改行はここで追加（textContentなら \n でOK）
+        htmlText += "\n";
         textIndex++;
         charIndex = 0;
         setTimeout(typing, 500);
@@ -28,3 +28,7 @@ function intro_typeWriter() {
 
   typing();
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  setTimeout(intro_typeWriter, 100 * "てぃの公式サイト".length + 500); // 100ms × 10文字 + 余裕
+});
