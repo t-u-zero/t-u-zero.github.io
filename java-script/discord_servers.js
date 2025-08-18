@@ -1,33 +1,51 @@
 function discord_servers_typeWriter() {
   const texts = [
-    "<a href=' https://discord.com/invite/AnCywZBabz 'target='_blank'>𝑪𝑶𝑺𝑴𝑶𝑺 𝑺𝑬𝑹𝑽𝑬𝑹</a>",
-    "<a href=' https://discord.com/invite/4jgmAhUmYX 'target='_blank'>💫 𝔽𝕒𝕟𝕒𝕣𝕚𝕒</a>",
-    "<a href=' https://discord.com/invite/SNc8tfc9KC 'target='_blank'>🌏Voynich💻</a>"
+    "𝑪𝑶𝑺𝑴𝑶𝑺 𝑺𝑬𝑹𝑽𝑬𝑹",
+    "💫 𝔽𝕒𝕟𝕒𝕣𝕚𝕒",
+    "🌏Voynich💻"
   ];
+  const links = [
+    "https://discord.com/invite/AnCywZBabz",
+    "https://discord.com/invite/4jgmAhUmYX",
+    "https://discord.com/invite/SNc8tfc9KC"
+  ];
+
   const target = document.getElementById("discord_servers_typewriter");
   let textIndex = 0;
   let charIndex = 0;
+  let currentText = "";
   let htmlText = "";
 
   function typing() {
     if (textIndex < texts.length) {
-      const currentText = texts[textIndex];
+      currentText = texts[textIndex];
       if (charIndex < currentText.length) {
         htmlText += currentText.charAt(charIndex);
         target.textContent = htmlText;
         charIndex++;
         setTimeout(typing, 100);
       } else {
-        htmlText += "\n";
+        // タイピング完了 → リンクに変換
+        const link = document.createElement("a");
+        link.href = links[textIndex];
+        link.target = "_blank";
+        link.innerHTML = currentText;
+        target.innerHTML = ""; // 一旦消す
+        target.appendChild(link);
+
+        // 改行追加
+        target.appendChild(document.createElement("br"));
+
+        // 次のテキストへ
         textIndex++;
         charIndex = 0;
+        htmlText = "";
         setTimeout(typing, 500);
       }
     }
   }
 
   typing();
-}
 
 document.addEventListener("DOMContentLoaded", () => {
   const target = document.getElementById("discord_servers_typewriter");
