@@ -37,6 +37,7 @@ function discord_servers_typeWriter() {
         link.innerHTML = currentText;
 
         // typingSpan を消してリンクに置き換え
+        typingSpan.textContent = "";
         target.removeChild(typingSpan);
         target.appendChild(link);
         target.appendChild(document.createElement("br"));
