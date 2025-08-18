@@ -1,5 +1,5 @@
 const text = "名前: てぃ\n年齢: 17歳\n好きなもの: 魔法";
-const target = document.getElementById("typewriter");
+const target = document.getElementById("intro-typewriter");
 let i = 0;
 
 function typeWriter() {
