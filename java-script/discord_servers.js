@@ -28,7 +28,7 @@ function discord_servers_typeWriter() {
         htmlText += currentText.charAt(charIndex);
         typingSpan.textContent = htmlText;
         charIndex++;
-        setTimeout(typing, 100);
+        setTimeout(typing, 50);
       } else {
         // タイピング完了 → リンクに変換
         const link = document.createElement("a");
