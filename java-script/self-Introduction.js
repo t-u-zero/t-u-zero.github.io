@@ -1,19 +1,30 @@
 function intro_typeWriter() {
-  const text = "名前: てぃ<br>年齢: 17歳<br>好きなもの: 魔法";
+  const texts = [
+    "名前: てぃ",
+    "年齢: 17歳",
+    "好きなもの: 魔法"
+  ];
   const target = document.getElementById("intro_typewriter");
-  let i = 0;
+  let textIndex = 0;
+  let charIndex = 0;
   let htmlText = "";
 
   function typing() {
-    if (i < text.length) {
-      htmlText += text.charAt(i);
-      target.innerHTML = htmlText;
-      i++;
-      setTimeout(typing, 100);
+    if (textIndex < texts.length) {
+      const currentText = texts[textIndex];
+      if (charIndex < currentText.length) {
+        htmlText += currentText.charAt(charIndex);
+        target.textContent = htmlText; // ← HTMLタグを避けるため textContent に
+        charIndex++;
+        setTimeout(typing, 100);
+      } else {
+        htmlText += "\n"; // ← 改行はここで追加（textContentなら \n でOK）
+        textIndex++;
+        charIndex = 0;
+        setTimeout(typing, 500);
+      }
     }
   }
 
   typing();
 }
-
-document.addEventListener("DOMContentLoaded", intro_typeWriter);
