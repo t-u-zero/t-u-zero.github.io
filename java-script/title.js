@@ -1,6 +1,6 @@
 function title_typeWriter() {
   const titletext = "てぃ GitHubサイト";
-  const target = document.getElementById("title-typewriter");
+  const target = document.getElementById("title_typewriter");
   let i = 0;
 
   function typing() {
