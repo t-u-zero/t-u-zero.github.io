@@ -11,6 +11,11 @@ function discord_servers_typeWriter() {
   ];
 
   const target = document.getElementById("discord_servers_typewriter");
+
+  // タイピング表示用の一時エリア
+  const typingSpan = document.createElement("span");
+  target.appendChild(typingSpan);
+
   let textIndex = 0;
   let charIndex = 0;
   let currentText = "";
@@ -21,7 +26,7 @@ function discord_servers_typeWriter() {
       currentText = texts[textIndex];
       if (charIndex < currentText.length) {
         htmlText += currentText.charAt(charIndex);
-        target.textContent = htmlText;
+        typingSpan.textContent = htmlText;
         charIndex++;
         setTimeout(typing, 100);
       } else {
@@ -30,21 +35,21 @@ function discord_servers_typeWriter() {
         link.href = links[textIndex];
         link.target = "_blank";
         link.innerHTML = currentText;
-        target.innerHTML = ""; // 一旦消す
-        target.appendChild(link);
 
-        // 改行追加
+        // typingSpan を消してリンクに置き換え
+        target.removeChild(typingSpan);
+        target.appendChild(link);
         target.appendChild(document.createElement("br"));
 
-        // 次のテキストへ
-        textIndex++;
-        charIndex = 0;
+        // 次のテキスト用に typingSpan を再追加
         htmlText = "";
+        charIndex = 0;
+        textIndex++;
+        target.appendChild(typingSpan);
         setTimeout(typing, 500);
       }
     }
   }
-
   typing();
 }
 
