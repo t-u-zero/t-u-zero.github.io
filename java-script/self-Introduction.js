@@ -29,6 +29,4 @@ function intro_typeWriter() {
   typing();
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  setTimeout(intro_typeWriter, 100 * "てぃの公式サイト".length + 500); // 100ms × 10文字 + 余裕
-});
+document.addEventListener("DOMContentLoaded", intro_typewriter)
