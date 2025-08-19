@@ -2,8 +2,8 @@ function COSMOS_typeWriter() {
   const texts = [
     "サーバー名: COSMOS SERVER",
     "設立: 2023/08/17",
-    "設立者: cosmos_2525",
-    "現オーナー: cosmos_2525",
+    "設立者: @cosmos_2525",
+    "現オーナー: @cosmos_2525",
     "概要:",
     "独自に制作している役職PvPをはじめとする、MinecraftPvPや、その他Minecraftに関連するもの、",
     "Minecraft以外の様々なゲームなどを遊ぶプレイヤー達のためのゲームコミュニティサーバー"
