@@ -1,4 +1,9 @@
 function discord_servers_typeWriter() {
+  const texts1 = [
+    "COSMOS SERVER",
+    "Fanaria",
+    "Voynich"
+  ];
   const texts = [
     "𝑪𝑶𝑺𝑴𝑶𝑺 𝑺𝑬𝑹𝑽𝑬𝑹",
     "💫 𝔽𝕒𝕟𝕒𝕣𝕚𝕒",
