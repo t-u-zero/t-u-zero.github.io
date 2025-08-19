@@ -1,5 +1,5 @@
 function Fanaria_title_typeWriter() {
-  const titletext = "Fanaria";
+  const titletext = "💫 𝔽𝕒𝕟𝕒𝕣𝕚𝕒";
   const target = document.getElementById("fanaria_title_typewriter");
   let i = 0;
 
