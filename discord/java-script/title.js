@@ -1,4 +1,4 @@
-function title_typeWriter() {
+function discord_title_typeWriter() {
   const titletext = "てぃのDiscord";
   const target = document.getElementById("discord_title_typewriter");
   let i = 0;
@@ -14,4 +14,4 @@ function title_typeWriter() {
   typing();
 }
 
-document.addEventListener("DOMContentLoaded", title_typeWriter);
+document.addEventListener("DOMContentLoaded", discord_title_typeWriter);
