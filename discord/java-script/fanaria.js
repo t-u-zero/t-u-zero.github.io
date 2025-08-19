@@ -2,7 +2,11 @@ function Fanaria_typeWriter() {
   const texts = [
     "サーバー名: Fanaria",
     "設立: 2025/05/05",
-    "概要:"
+    "設立者: aruta_4rut4, t_u.zero",
+    "現オーナー: t_u.zero",
+    "概要:",
+    "シンプルな構成、管理体制で、どんな話題でも幅広くのびのびと楽しむことのできる、",
+    "雑談鯖の原点のようなサーバーを目指す新規雑談鯖"
   ];
   const target = document.getElementById("fanaria_typewriter");
   let textIndex = 0;
