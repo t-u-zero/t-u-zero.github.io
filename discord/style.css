@@ -99,6 +99,7 @@ header.ch7 {
 }
 #sideMenu li {
   padding: 16px 24px;
+  font-size: 1.5em;
 }
 #sideMenu a {
   color: #fff;
