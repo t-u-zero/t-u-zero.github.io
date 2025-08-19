@@ -141,9 +141,12 @@ div {
   animation: fadeUp 1.5s ease-out forwards;
 }
 
-a1 {
+a {
   color: #1e90ff;
   text-decoration: none;
+}
+
+.link1 {
   font-size: 1.6em;
   line-height: 1.6;
   animation: fadeUp 1.5s ease-out forwards;
