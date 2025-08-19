@@ -1,0 +1,33 @@
+body {
+  background: radial-gradient(circle at center, #1a1a2e, #0f0f1f);
+  color: #f0f0ff;
+  font-family: 'Cinzel', serif;
+  text-align: center;
+  padding: 5em;
+}
+
+h1 {
+  font-size: 3em;
+  animation: fadeIn 2s ease-in-out;
+}
+
+p {
+  font-size: 1.2em;
+  margin-top: 1em;
+  opacity: 0.8;
+}
+
+a {
+  color: #ffccff;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #ffffff;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
