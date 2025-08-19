@@ -38,10 +38,24 @@
 </section>
 
 <section>
-  <h2><a href="fanaria/">Fanaria</a></h2>
+  <h2>
+    <a href="fanaria/" id="fanaria_link">Fanaria</a>
+    <button onclick="copyFanariaURL()" class="copy-button">🔗</button>
+  </h2>
     <p id="fanaria_typewriter">
 
     </p>
+<script>
+  function copyFanariaURL() {
+    const link = document.getElementById("fanaria_link").href;
+    navigator.clipboard.writeText(link).then(() => {
+      alert("FanariaのURLをコピーしました");
+    }).catch(err => {
+      console.error("コピーに失敗:", err);
+    });
+  }
+</script>
+
   <script src="https://t-u-zero.github.io/discord/java-script/fanaria.js"></script>
 </section>
       <!--フッター-->
