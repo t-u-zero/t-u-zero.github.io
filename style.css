@@ -97,7 +97,8 @@ header.ch7 {
   margin: 0;
 }
 #sideMenu li {
-  padding: 48px 24px;
+  top: 48px;
+  padding: 16px 24px;
 }
 #sideMenu a {
   color: #fff;
