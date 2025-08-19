@@ -8,9 +8,13 @@ function Fanaria_title_typeWriter() {
       target.textContent += titletext.charAt(i);
       i++;
       setTimeout(typing, 100);
+    } else {
+      // 打ち終わったら置き換える
+      setTimeout(() => {
+        target.textContent = lasttext;
+      }, 100);
     }
   }
-
   typing();
 }
 
