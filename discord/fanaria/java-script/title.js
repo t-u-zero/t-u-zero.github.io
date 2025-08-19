@@ -13,7 +13,7 @@ function Fanaria_title_typeWriter() {
       // 打ち終わったら置き換える
       setTimeout(() => {
         target.textContent = lasttext;
-      }, 100);
+      }, 250);
     }
   }
   typing();
