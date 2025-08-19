@@ -1,5 +1,5 @@
 function discord_title_typeWriter() {
-  const titletext = "てぃのDiscord";
+  const titletext = "てぃのDiscord Hone";
   const target = document.getElementById("discord_title_typewriter");
   let i = 0;
 
