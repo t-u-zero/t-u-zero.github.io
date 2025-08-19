@@ -110,7 +110,8 @@ header.ch7 {
   color: #ffd86b;
 }
 
-#intro_typewriter {
+#cosmos_typewriter,
+#fanaria_typewriter {
   white-space: pre-line;
   font-size: 1.3em;
   color: #4b0082; /* 魔法っぽい紫 */
