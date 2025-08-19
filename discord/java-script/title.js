@@ -1,6 +1,6 @@
 function title_typeWriter() {
   const titletext = "てぃのDiscord";
-  const target = document.getElementById("title_typewriter");
+  const target = document.getElementById("discord_title_typewriter");
   let i = 0;
 
   function typing() {
