@@ -20,7 +20,7 @@ function COSMOS_typeWriter() {
         htmlText += currentText.charAt(charIndex);
         target.textContent = htmlText;
         charIndex++;
-        setTimeout(typing, 100);
+        setTimeout(typing, 50);
       } else {
         htmlText += "\n";
         textIndex++;
