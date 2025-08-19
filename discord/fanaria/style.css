@@ -91,6 +91,7 @@ body {
 }
 #sideMenu li {
   padding: 16px 24px;
+  font-size: 1.2em;
 }
 #sideMenu a {
   color: #fff;
