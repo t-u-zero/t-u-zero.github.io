@@ -58,7 +58,7 @@ header.ch7 {
   height: 100px;
   background: #444;
   color: #fff;
-  font-size: 28px;
+  font-size: 48px;
   border-radius: 24px;
   display: flex;
   align-items: center;
@@ -97,7 +97,7 @@ header.ch7 {
   margin: 0;
 }
 #sideMenu li {
-  padding: 16px 24px;
+  padding: 16px 48px;
 }
 #sideMenu a {
   color: #fff;
