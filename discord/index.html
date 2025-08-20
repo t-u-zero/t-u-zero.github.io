@@ -1,67 +1,82 @@
 <!DOCTYPE html>
 <html lang="ja">
   <head>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" href="https://content.lifeistech-lesson.jp/Curriculum_materials/Original/global.css" type="text/css">
-  <link rel="stylesheet" href="style.css" type="text/css">
-  <script src="initialize.js"></script>
-  <link rel="icon" href="https://t-u-zero.github.io/image/Site_icon.png">
-  <title>てぃのDiscord関連</title>
-</head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://content.lifeistech-lesson.jp/Curriculum_materials/Original/global.css" type="text/css">
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <script src="initialize.js"></script>
+    <link rel="icon" href="https://t-u-zero.github.io/image/Site_icon.png">
+    <title>てぃのDiscord関連</title>
+  </head>
+  
   <body>
     <!-- Ch7ヘッダー部分 -->
-<header class="hero-header">
-  <div class="overlay">
-    <h1 id="discord_title_typewriter">
+    <header class="hero-header">
+      <div class="overlay">
+        <h1 id="discord_title_typewriter">
+    
+        </h1>
+      </div>
+    </header>
 
-    </h1>
-  </div>
-</header>
+    <div id="menuButton">☰</div>
+    
+    <div id="sideMenu">
+      <ul>
+        <li><a href="https://t-u-zero.github.io/">ホーム</a></li>
+        <li><a href="cosmos/">COSMOS</a></li>
+        <li><a href="fanaria/">Fanaria</a></li>
+      </ul>
+    </div>
 
-<div id="menuButton">☰</div>
+    <!-- お店紹介 -->
+    <section>
+      <h2>
+        <a href="cosmos/" id="cosmos_link">COSMOS</a>
+        <button onclick="copyCOSMOSURL()" class="copy-button">🔗</button>
+      </h2>
+        <p id="cosmos_typewriter">
+    
+        </p>
+      <script>
+        function copyCOSMOSURL() {
+          const link = document.getElementById("cosmos_link").href;
+          navigator.clipboard.writeText(link).then(() => {
+            alert("COSMOSのURLをコピーしました");
+          }).catch(err => {
+            console.error("コピーに失敗:", err);
+          });
+        }
+      </script>
+      <script src="https://t-u-zero.github.io/discord/java-script/cosmos.js"></script>
+    </section>
 
-<div id="sideMenu">
-  <ul>
-    <li><a href="https://t-u-zero.github.io/">ホーム</a></li>
-    <li><a href="cosmos/">COSMOS</a></li>
-    <li><a href="fanaria/">Fanaria</a></li>
-  </ul>
-</div>
+    <section>
+      <h2>
+        <a href="fanaria/" id="fanaria_link">Fanaria</a>
+        <button onclick="copyFanariaURL()" class="copy-button">🔗</button>
+      </h2>
+        <p id="fanaria_typewriter">
+    
+        </p>
 
-<!-- お店紹介 -->
-<section>
-  <h2>COSMOS</h2>
-    <p id="cosmos_typewriter">
+      <script>
+        function copyFanariaURL() {
+          const link = document.getElementById("fanaria_link").href;
+          navigator.clipboard.writeText(link).then(() => {
+            alert("FanariaのURLをコピーしました");
+          }).catch(err => {
+            console.error("コピーに失敗:", err);
+          });
+        }
+      </script>
+      <script src="https://t-u-zero.github.io/discord/java-script/fanaria.js"></script>
+    </section>
 
-    </p>
-  <script src="https://t-u-zero.github.io/discord/java-script/cosmos.js"></script>
-</section>
-
-<section>
-  <h2>
-    <a href="fanaria/" id="fanaria_link">Fanaria</a>
-    <button onclick="copyFanariaURL()" class="copy-button">🔗</button>
-  </h2>
-    <p id="fanaria_typewriter">
-
-    </p>
-<script>
-  function copyFanariaURL() {
-    const link = document.getElementById("fanaria_link").href;
-    navigator.clipboard.writeText(link).then(() => {
-      alert("FanariaのURLをコピーしました");
-    }).catch(err => {
-      console.error("コピーに失敗:", err);
-    });
-  }
-</script>
-
-  <script src="https://t-u-zero.github.io/discord/java-script/fanaria.js"></script>
-</section>
-      <!--フッター-->
-<footer>
-  <a href=" https://github.com/t-u-zero/ "target=_blank">@t-u-zero</a>によって作成されました
-</footer>
+    <!--フッター-->
+    <footer>
+      <a href=" https://github.com/t-u-zero/ "target=_blank">@t-u-zero</a>によって作成されました
+    </footer>
     <script src="https://t-u-zero.github.io/discord/java-script/menu.js"></script>
     <script src="https://t-u-zero.github.io/discord/java-script/title.js"></script>
   </body>
