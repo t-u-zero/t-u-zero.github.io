@@ -27,13 +27,13 @@ p {
 }
 
 a {
-  color: #ffccff;
-  text-decoration: underline;
-  transition: color 0.3s ease;
+  color: #1e90ff;
+  text-decoration: none;
 }
 
 a:hover {
-  color: #ffffff;
+  text-decoration: underline;
+  color: #ff4500;
 }
 
 footer {
