@@ -11,7 +11,7 @@ function discord_servers_typeWriter() {
   ];
   const links = [
     "https://discord.com/invite/AnCywZBabz",
-    "https://discord.com/invite/4jgmAhUmYX",
+    "https://t-u-zero.github.io/discord/fanaria/",
     "https://discord.com/invite/SNc8tfc9KC"
   ];
 
