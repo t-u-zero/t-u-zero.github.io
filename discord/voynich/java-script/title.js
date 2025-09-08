@@ -1,5 +1,5 @@
 function Voynich_title_typeWriter() {
-  const titletext = "Voynich";
+  const titletext = "voynich";
   const lasttext = "🌏Voynich💻";
   const target = document.getElementById("voynich_title_typewriter");
   let i = 0;
