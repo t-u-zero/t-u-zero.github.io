@@ -1,5 +1,5 @@
 function COSMOS_title_typeWriter() {
-  const titletext = "COSMOS SERVER";
+  const titletext = "cosmos server";
   const lasttext = "𝑪𝑶𝑺𝑴𝑶𝑺 𝑺𝑬𝑹𝑽𝑬𝑹";
   const target = document.getElementById("cosmos_title_typewriter");
   let i = 0;
