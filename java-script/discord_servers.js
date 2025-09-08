@@ -10,9 +10,9 @@ function discord_servers_typeWriter() {
     "🌏Voynich💻"
   ];
   const links = [
-    "https://discord.com/invite/AnCywZBabz",
+    "https://t-u-zero.github.io/discord/cosmos/",
     "https://t-u-zero.github.io/discord/fanaria/",
-    "https://discord.com/invite/SNc8tfc9KC"
+    "https://t-u-zero.github.io/discord/voynich/"
   ];
 
   const target = document.getElementById("discord_servers_typewriter");
