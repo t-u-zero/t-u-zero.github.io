@@ -227,23 +227,40 @@ footer {
     #menuButton {
         display: none;
     }
-    #sidemenu {
-        position: relative;
-        background:var(--panel);
-        z-index:50;
+    #sideMenu {
+        position: sticky;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: auto;
+        background: var(--panel, rgba(30, 30, 40, 0.95));
+        padding: 0;
+        box-shadow: none;
+        z-index: 50;
     }
-    #sidemenu ul {
-        display: flex !important;
-        gap: 16px;
+
+    #sideMenu ul {
+        display: flex;
+        gap: 32px;
         list-style: none;
         margin: 0;
         padding: 8px 16px;
     }
 
-    #sidemenu a {
+    #sideMenu li {
+        padding: 0;
+        font-size: 1.5em;
+    }
+
+    #sideMenu a {
         color: white;
         text-decoration: none;
-        padding: 8px;
+        padding: 8px 12px;
+        font-weight: 500;
+    }
+
+    #sideMenu.open {
+        left: 0; /* 無意味になるが、念のため残してOK */
     }
 
     h1 {
@@ -270,5 +287,4 @@ footer {
         opacity: 1;
         transform: translateY(0);
     }
-
 }
