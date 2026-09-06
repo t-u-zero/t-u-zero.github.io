@@ -14,7 +14,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     try {
-        // Markdownファイルを取得
         const response = await fetch(markdownFile);
 
         if (!response.ok) {
@@ -25,17 +24,17 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         const markdown = await response.text();
 
-        // HTMLへ変換
+        // Markdown → HTML
         const html = marked.parse(markdown);
 
-        // 一旦HTMLとして読み込む
+        // HTMLとして解析
         const parser = new DOMParser();
-        const documentFragment =
+        const parsedDocument =
             parser.parseFromString(html, "text/html");
 
-        // ボックス構造に変換
+        // セクション構造を作成
         const result = createSections(
-            documentFragment.body.children
+            Array.from(parsedDocument.body.children)
         );
 
         container.replaceChildren(...result);
@@ -53,59 +52,86 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 
 /**
- * 見出しを基準にセクションを作成
+ * MarkdownのHTMLをセクション構造へ変換する。
  *
- * #       → h1
- * ##      → h2
- * ###     → h3
+ * 見出しレベル:
  *
- * 下位レベルの見出しは、直前の上位レベルの
- * セクションの中に入る。
+ * h1
+ * └─ h2
+ *    └─ h3
+ *       └─ h4
+ *
+ * 同じレベルの見出しは兄弟になる。
+ *
+ * 下位レベルの見出しは、
+ * 直前の上位レベルのセクションに入る。
+ *
+ * 見出しの文字列は一切判定に使用しないため、
+ * 同じタイトルが何回あっても問題ない。
  */
 function createSections(elements) {
 
     const result = [];
 
     /*
-     * 現在開いているセクション
+     * 現在のセクション。
      *
-     * 例:
-     *
-     * # A
-     * ## B
-     * ### C
-     *
-     * の場合
-     *
-     * [
-     *   { level: 1, section: A },
-     *   { level: 2, section: B },
-     *   { level: 3, section: C }
-     * ]
+     * stackの末尾が常に
+     * 「現在本文を書き込む場所」になる。
      */
     const stack = [];
 
+
     for (const element of elements) {
 
-        // h1～h6か判定
-        const match = element.tagName.match(/^H([1-6])$/);
+        /*
+         * =====================================
+         * 水平線
+         * =====================================
+         */
+
+        if (element.tagName === "HR") {
+
+            /*
+             * ここで現在の階層をすべて終了。
+             */
+            stack.length = 0;
+
+            result.push(element);
+
+            continue;
+        }
+
+
+        /*
+         * =====================================
+         * 見出し
+         * =====================================
+         */
+
+        const match =
+            element.tagName.match(/^H([1-6])$/);
+
 
         if (match) {
 
             const level = Number(match[1]);
 
+
             /*
-             * 今の見出し以上のレベルを閉じる
+             * 現在の見出しと同じ、
+             * またはそれより上の階層を閉じる。
              *
-             * h2が来た場合:
+             * 例:
              *
-             * h1
-             *   └ h2
+             * h2
+             * h3
+             * h2
              *
-             * から、新しいh2を作るので、
-             * 現在のh2は閉じる。
+             * ↓
              *
-             * h1は残る。
+             * h2
+             * h2
              */
             while (
                 stack.length > 0 &&
@@ -114,22 +140,27 @@ function createSections(elements) {
                 stack.pop();
             }
 
+
             /*
-             * 新しいセクションを作成
+             * sectionを作成
              */
             const section =
                 document.createElement("section");
 
-            section.className =
-                `md-section md-section-h${level}`;
+            section.classList.add(
+                "md-section",
+                `md-section-h${level}`
+            );
+
 
             /*
              * 見出し
              */
             section.appendChild(element);
 
+
             /*
-             * 本文用コンテナ
+             * 本文領域
              */
             const content =
                 document.createElement("div");
@@ -139,68 +170,65 @@ function createSections(elements) {
 
             section.appendChild(content);
 
+
             /*
-             * 親セクションが存在する場合、
-             * 親のcontentの中に入れる。
+             * 親が存在する場合
              */
             if (stack.length > 0) {
 
                 const parent =
-                    stack[stack.length - 1].section;
+                    stack[stack.length - 1];
 
-                const parentContent =
-                    parent.querySelector(
-                        ":scope > .md-section-content"
-                    );
-
-                parentContent.appendChild(section);
+                parent.content.appendChild(section);
 
             } else {
 
                 /*
-                 * 親がない場合は最上位
+                 * 親が存在しない場合は
+                 * ページの最上位に追加。
                  */
                 result.push(section);
             }
 
+
             /*
-             * 現在のセクションとして登録
+             * 新しい現在位置
              */
             stack.push({
                 level: level,
-                section: section
+                section: section,
+                content: content
             });
 
             continue;
         }
 
+
         /*
-         * 見出しではない要素
+         * =====================================
+         * 通常のHTML
+         * =====================================
          */
 
         if (stack.length > 0) {
 
             /*
-             * 現在の一番深いセクションに入れる
+             * 現在の一番深いセクションへ追加
              */
             const current =
-                stack[stack.length - 1].section;
+                stack[stack.length - 1];
 
-            const content =
-                current.querySelector(
-                    ":scope > .md-section-content"
-                );
-
-            content.appendChild(element);
+            current.content.appendChild(element);
 
         } else {
 
             /*
-             * 見出しより前にある要素
+             * 見出しより前に存在する要素。
              */
             result.push(element);
         }
     }
+
 
     return result;
 }
