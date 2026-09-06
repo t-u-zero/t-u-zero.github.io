@@ -1,0 +1,25 @@
+.md-section {
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    margin: 24px 0;
+    overflow: hidden;
+}
+
+.md-section > h2 {
+    margin: 0;
+    padding: 16px 20px;
+    background: #f5f5f5;
+}
+
+.md-section-content {
+    padding: 20px;
+}
+
+.md-section-h3 {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+#markdown > h1 {
+    margin-bottom: 40px;
+}
