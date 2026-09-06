@@ -53,14 +53,37 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 
 /**
- * セクションに変換
+ * 見出しを基準にセクションを作成
+ *
+ * #       → h1
+ * ##      → h2
+ * ###     → h3
+ *
+ * 下位レベルの見出しは、直前の上位レベルの
+ * セクションの中に入る。
  */
 function createSections(elements) {
 
     const result = [];
 
-    let currentSection = null;
-    let currentLevel = null;
+    /*
+     * 現在開いているセクション
+     *
+     * 例:
+     *
+     * # A
+     * ## B
+     * ### C
+     *
+     * の場合
+     *
+     * [
+     *   { level: 1, section: A },
+     *   { level: 2, section: B },
+     *   { level: 3, section: C }
+     * ]
+     */
+    const stack = [];
 
     for (const element of elements) {
 
@@ -72,56 +95,81 @@ function createSections(elements) {
             const level = Number(match[1]);
 
             /*
-             * h1はページタイトルとして扱う
+             * 今の見出し以上のレベルを閉じる
+             *
+             * h2が来た場合:
+             *
+             * h1
+             *   └ h2
+             *
+             * から、新しいh2を作るので、
+             * 現在のh2は閉じる。
+             *
+             * h1は残る。
              */
-            if (level === 1) {
-
-                // 現在のセクションを確定
-                if (currentSection) {
-                    result.push(currentSection);
-                    currentSection = null;
-                }
-
-                result.push(element);
-
-                currentLevel = null;
-
-                continue;
-            }
-
-            /*
-             * 同じレベル、または上位レベルの
-             * 見出しが来たら現在のセクションを終了
-             */
-            if (
-                currentSection &&
-                level <= currentLevel
+            while (
+                stack.length > 0 &&
+                stack[stack.length - 1].level >= level
             ) {
-                result.push(currentSection);
-                currentSection = null;
+                stack.pop();
             }
 
             /*
              * 新しいセクションを作成
              */
-            currentSection = document.createElement("section");
+            const section =
+                document.createElement("section");
 
-            currentSection.className =
+            section.className =
                 `md-section md-section-h${level}`;
 
-            // 見出し
-            currentSection.appendChild(element);
+            /*
+             * 見出し
+             */
+            section.appendChild(element);
 
-            // 本文用コンテナ
+            /*
+             * 本文用コンテナ
+             */
             const content =
                 document.createElement("div");
 
             content.className =
                 "md-section-content";
 
-            currentSection.appendChild(content);
+            section.appendChild(content);
 
-            currentLevel = level;
+            /*
+             * 親セクションが存在する場合、
+             * 親のcontentの中に入れる。
+             */
+            if (stack.length > 0) {
+
+                const parent =
+                    stack[stack.length - 1].section;
+
+                const parentContent =
+                    parent.querySelector(
+                        ":scope > .md-section-content"
+                    );
+
+                parentContent.appendChild(section);
+
+            } else {
+
+                /*
+                 * 親がない場合は最上位
+                 */
+                result.push(section);
+            }
+
+            /*
+             * 現在のセクションとして登録
+             */
+            stack.push({
+                level: level,
+                section: section
+            });
 
             continue;
         }
@@ -129,11 +177,18 @@ function createSections(elements) {
         /*
          * 見出しではない要素
          */
-        if (currentSection) {
+
+        if (stack.length > 0) {
+
+            /*
+             * 現在の一番深いセクションに入れる
+             */
+            const current =
+                stack[stack.length - 1].section;
 
             const content =
-                currentSection.querySelector(
-                    ".md-section-content"
+                current.querySelector(
+                    ":scope > .md-section-content"
                 );
 
             content.appendChild(element);
@@ -145,13 +200,6 @@ function createSections(elements) {
              */
             result.push(element);
         }
-    }
-
-    /*
-     * 最後のセクション
-     */
-    if (currentSection) {
-        result.push(currentSection);
     }
 
     return result;
