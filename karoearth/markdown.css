@@ -1,0 +1,327 @@
+#markdown {
+    width: min(1100px, calc(100% - 40px));
+    min-height: 100vh;
+    margin: 0 auto;
+    padding: 60px 0 100px;
+}
+
+#markdown h1,
+#markdown h2,
+#markdown h3,
+#markdown h4,
+#markdown h5,
+#markdown h6 {
+    color: #fff;
+    line-height: 1.35;
+}
+
+.md-section-h1 {
+    position: relative;
+    margin: 0 0 50px;
+    padding: 30px;
+    border: 1px solid var(--cyan);
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0, 229, 255, 0.08),
+            rgba(255, 43, 214, 0.035)
+        );
+    box-shadow:
+        0 0 25px rgba(0, 229, 255, 0.12),
+        inset 0 0 25px rgba(0, 229, 255, 0.035);
+    clip-path: polygon(
+        0 0,
+        calc(100% - 18px) 0,
+        100% 18px,
+        100% 100%,
+        18px 100%,
+        0 calc(100% - 18px)
+    );
+}
+
+.md-section-h1::before {
+    content: "SYSTEM // DOCUMENT";
+    display: block;
+    margin-bottom: 12px;
+    color: var(--cyan);
+    font-family: Consolas, monospace;
+    font-size: 0.75rem;
+}
+
+.md-section-h1 > h1 {
+    margin: 0;
+    font-size: 2.6rem;
+    text-shadow: 0 0 10px rgba(0, 229, 255, 0.45);
+}
+
+.md-section-h2 {
+    position: relative;
+    margin: 28px 0;
+    border: 1px solid var(--border);
+    background: var(--panel);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+}
+
+.md-section-h2::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--cyan);
+    box-shadow: 0 0 12px var(--cyan);
+}
+
+.md-section-h2 > h2 {
+    margin: 0;
+    padding: 17px 24px;
+    border-bottom: 1px solid var(--border);
+    background:
+        linear-gradient(
+            90deg,
+            var(--cyan-soft),
+            transparent 70%
+        );
+    color: #fff;
+    font-size: 1.35rem;
+    text-shadow: 0 0 8px rgba(0, 229, 255, 0.25);
+}
+
+.md-section-h3 {
+    position: relative;
+    margin: 20px 0;
+    border: 1px solid rgba(255, 43, 214, 0.3);
+    background: var(--panel-inner);
+    box-shadow: inset 0 0 20px rgba(255, 43, 214, 0.025);
+}
+
+.md-section-h3::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--pink);
+    box-shadow: 0 0 10px var(--pink);
+}
+
+.md-section-h3 > h3 {
+    margin: 0;
+    padding: 13px 20px;
+    border-bottom: 1px solid rgba(255, 43, 214, 0.2);
+    background:
+        linear-gradient(
+            90deg,
+            var(--pink-soft),
+            transparent 70%
+        );
+    font-size: 1.1rem;
+}
+
+.md-section-h4,
+.md-section-h5,
+.md-section-h6 {
+    position: relative;
+    margin: 16px 0;
+    padding-left: 18px;
+    border-left: 2px solid var(--green);
+}
+
+.md-section-h4 > h4,
+.md-section-h5 > h5,
+.md-section-h6 > h6 {
+    margin: 0 0 8px;
+    color: var(--green);
+    font-size: 1rem;
+}
+
+.md-section-content {
+    padding: 22px 26px;
+}
+
+.md-section-content > .md-section {
+    margin-top: 24px;
+}
+
+.md-section-content > .md-section:first-child {
+    margin-top: 10px;
+}
+
+#markdown p {
+    margin: 0 0 1.2em;
+}
+
+#markdown p:last-child {
+    margin-bottom: 0;
+}
+
+#markdown a {
+    color: var(--cyan);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(0, 229, 255, 0.35);
+    transition:
+        color 0.15s,
+        text-shadow 0.15s,
+        border-color 0.15s;
+}
+
+#markdown a:hover {
+    color: #fff;
+    border-color: var(--cyan);
+    text-shadow: 0 0 8px var(--cyan);
+}
+
+#markdown code {
+    padding: 0.2em 0.45em;
+    border: 1px solid rgba(0, 229, 255, 0.18);
+    border-radius: 4px;
+    background: #070b10;
+    color: var(--cyan);
+    font-family:
+        "Cascadia Code",
+        Consolas,
+        monospace;
+    font-size: 0.9em;
+}
+
+#markdown pre {
+    position: relative;
+    margin: 22px 0;
+    padding: 22px;
+    overflow-x: auto;
+    border: 1px solid rgba(0, 229, 255, 0.3);
+    background: #05080c;
+    box-shadow: inset 0 0 25px rgba(0, 229, 255, 0.025);
+    font-family:
+        "Cascadia Code",
+        Consolas,
+        monospace;
+    line-height: 1.6;
+}
+
+#markdown pre::before {
+    content: "CODE";
+    display: block;
+    margin-bottom: 12px;
+    color: var(--cyan);
+    font-size: 0.7rem;
+}
+
+#markdown pre code {
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: #d7e2ea;
+}
+
+#markdown blockquote {
+    position: relative;
+    margin: 22px 0;
+    padding: 16px 22px;
+    border-left: 3px solid var(--pink);
+    background:
+        linear-gradient(
+            90deg,
+            rgba(255, 43, 214, 0.08),
+            transparent
+        );
+    color: var(--text-muted);
+}
+
+#markdown ul,
+#markdown ol {
+    padding-left: 1.8em;
+}
+
+#markdown li::marker {
+    color: var(--cyan);
+}
+
+#markdown hr {
+    height: 1px;
+    margin: 40px 0;
+    border: 0;
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--cyan),
+            transparent
+        );
+    box-shadow: 0 0 8px rgba(0, 229, 255, 0.5);
+}
+
+#markdown table {
+    width: 100%;
+    margin: 24px 0;
+    border-collapse: collapse;
+    background: var(--panel);
+    border: 1px solid var(--border);
+}
+
+#markdown th,
+#markdown td {
+    padding: 12px 16px;
+    border: 1px solid rgba(0, 229, 255, 0.15);
+    text-align: left;
+}
+
+#markdown th {
+    background: rgba(0, 229, 255, 0.08);
+    color: var(--cyan);
+}
+
+#markdown img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid var(--border);
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.08);
+}
+
+.markdown-error {
+    padding: 20px;
+    border: 1px solid #ff2b6d;
+    background: rgba(255, 43, 109, 0.08);
+    color: #ff6b9a;
+    font-family: Consolas, monospace;
+}
+
+@media (max-width: 700px) {
+    #markdown {
+        width: calc(100% - 24px);
+        padding-top: 24px;
+    }
+
+    .md-section-h1 {
+        padding: 22px;
+    }
+
+    .md-section-h1 > h1 {
+        font-size: 2rem;
+    }
+
+    .md-section-content {
+        padding: 16px;
+    }
+
+    .md-section-h2 > h2 {
+        padding: 14px 18px;
+    }
+
+    .md-section-h3 > h3 {
+        padding: 12px 16px;
+    }
+
+    #markdown pre {
+        margin-left: -4px;
+        margin-right: -4px;
+        padding: 16px;
+    }
+
+    body.has-site-menu #markdown {
+        padding-top: 84px;
+    }
+}

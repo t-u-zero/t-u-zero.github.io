@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>かろEarth Server Hub</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body data-page="home" data-site-root="./">
+
+    <div class="page-loader" role="status" aria-live="polite">
+        <span class="page-loader-mark">KaroEarth</span>
+        <span class="page-loader-label">Loading...</span>
+        <span class="page-loader-spinner" aria-hidden="true"></span>
+        <span class="page-loader-progress" aria-hidden="true">
+            <span></span>
+        </span>
+    </div>
+
+    <header class="server-shell">
+        <nav class="topbar" aria-label="メインナビゲーション">
+            <a class="brand" href="./" aria-label="かろEarth ホーム">
+                <span>
+                    <strong>かろEarth</strong>
+                    <small>Server Hub</small>
+                </span>
+            </a>
+
+        </nav>
+
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="hero-copy">
+                <p class="eyebrow">KAROEARTH NETWORK STATUS</p>
+                <h1 id="hero-title">かろEarth 非公式ホームページ</h1>
+                <p class="lead">
+                    かろEarthの参加前確認、ルールなどが掲載されている。<br>
+                    BluePisionが作成した非公式のものです。意図的に公式のものに見た目を寄せています。
+                </p>
+
+                <div class="hero-actions">
+                    <a class="button primary" href="./rule/">利用規約を見る</a>
+                    <a class="button ghost" href="./mod-manual/">モデレーション資料</a>
+                </div>
+            </div>
+
+            <aside class="server-panel" aria-label="サーバー情報">
+
+                <dl class="node-list">
+                    <div>
+                        <dt>World</dt>
+                        <dd>Earth</dd>
+                    </div>
+                    <div>
+                        <dt>Mode</dt>
+                        <dd>Survival / Community</dd>
+                    </div>
+                    <div>
+                        <dt>Docs</dt>
+                        <dd>Rules / Manual / Wiki</dd>
+                    </div>
+                </dl>
+
+                <div class="signal-grid" aria-hidden="true">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </aside>
+        </section>
+    </header>
+
+    <main>
+        <section class="section-band" aria-labelledby="docs-title">
+            <div class="section-heading">
+                <p class="eyebrow">DOCUMENT INDEX</p>
+                <h2 id="docs-title">公開ページ</h2>
+            </div>
+
+            <div class="doc-grid">
+                <a class="doc-card" href="./rule/">
+                    <span class="card-kicker">RULE</span>
+                    <strong>利用規約</strong>
+                    <p>参加者向けの基本ルール、禁止事項、対応方針を確認できます。</p>
+                </a>
+
+                <a class="doc-card" href="./mod-manual/">
+                    <span class="card-kicker">STAFF</span>
+                    <strong>モデレーションマニュアル</strong>
+                    <p>運営・モデレーター向けの判断基準と対応手順を確認できます。</p>
+                </a>
+
+                <a class="doc-card" href="./wiki/">
+                    <span class="card-kicker">WIKI</span>
+                    <strong>Wiki</strong>
+                    <p>ワールドや遊び方に関する情報を追加していくための入口です。</p>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <span>かろEarth Server Hub</span>
+        <span>Powered by BluePision</span>
+    </footer>
+
+</body>
+
+</html>
