@@ -39,6 +39,10 @@ async function renderSection(parent, sectionData) {
     section.append(index, heading);
     parent.appendChild(section);
 
+    if (sectionData.image?.url) {
+        renderSectionBackground(section, sectionData.image);
+    }
+
     await revealStaticText(index);
     await typeText(heading, sectionData.title);
 
@@ -54,6 +58,24 @@ async function renderSection(parent, sectionData) {
 
         await renderItem(section, item);
     }
+}
+
+function renderSectionBackground(section, item) {
+    const background = document.createElement("div");
+    const image = document.createElement("img");
+
+    background.className = "profile-section-background";
+    background.setAttribute("aria-hidden", "true");
+    image.src = item.url;
+    image.alt = "";
+    image.loading = "lazy";
+    image.decoding = "async";
+    image.addEventListener("error", () => {
+        background.remove();
+    }, { once: true });
+    background.appendChild(image);
+    section.prepend(background);
+    section.classList.add("has-section-image");
 }
 
 async function renderField(parent, labelText, valueText) {
