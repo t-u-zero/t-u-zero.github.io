@@ -3,6 +3,9 @@ let skipTextAnimation = false;
 
 document.addEventListener("DOMContentLoaded", loadProfile);
 document.addEventListener("click", skipAllTextAnimation);
+document.addEventListener("touchstart", skipAllTextAnimation, {
+    passive: true
+});
 document.addEventListener("contextmenu", (event) => {
     event.preventDefault();
     skipAllTextAnimation();
