@@ -1,0 +1,90 @@
+{
+    "sections": [
+        {
+            "title": "人物",
+            "content": [
+                {"type": "image", "url": ""},
+                {"type": "title", "text": "名前"},
+                {"type": "text", "text": "鳩/てぃ"},
+
+                {"type": "title", "text": "生年月日"},
+                {"type": "text", "text": "2008/04/09"},
+
+                {"type": "title", "text": "自己紹介"},
+                {"type": "text", "text": "ただの小説アニメSNSゲーム音楽イラストを作りたいだけのなんでもやりたい青森のチャレンジャールーキーな一般学生"},
+
+                {"type": "title", "text": "出生"},
+                {"type": "text", "text": "青森県三八上北〇〇〇〇〇〇〇〇〇〇〇〇〇〇……"},
+
+                {"type": "title", "text": "好きなもの"},
+                {
+                    "type": "list",
+                    "list": [
+                        "創作",
+                        "ゲーム",
+                        "キャンプ",
+                        "釣り",
+                        "プログラミング"
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "作成コンテンツ",
+            "content": [
+                {"type": "title", "text": "Discord Service"},
+
+                {
+                    "type": "box",
+                    "contents": [
+                        {"type": "title2", "text": "Fanaria"},
+                        {"type": "text", "text": "もっとシンプルに、純粋な雑談を！"},
+                        {"type": "text", "text": "幅広い話題でのびのびと楽しめる雑談サーバーです！"},
+                        {
+                            "type": "button",
+                            "color": "#1A30FF",
+                            "text": "サーバーに参加",
+                            "alt": "Discordサーバーに参加する",
+                            "link": "https://discord.com/invite/4kbNvx52Rt"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "SNSアカウント",
+            "content": [
+                {
+                    "type": "image-button",
+                    "image": "https://fiicen.jp/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Ffavicon.0tpbuvn_1ifhe.ico&w=256&q=75",
+                    "alt": "Fiicen",
+                    "link": "https://fiicen.jp/field/Tanuki_Udon_ZERO"
+                },
+                {
+                    "type": "image-button",
+                    "image": "https://www.svgrepo.com/show/475689/twitter-color.svg",
+                    "alt": "Twitter",
+                    "link": "https://x.com/tanukiudon_zero"
+                },
+                {
+                    "type": "image-button",
+                    "image": "https://www.svgrepo.com/show/354046/mastodon-icon.svg",
+                    "alt": "Mastodon@mstdn.jp",
+                    "link": "https://mstdn.jp/@tanuki_udonn"
+                },
+                {
+                    "type": "image-button",
+                    "image": "https://www.svgrepo.com/show/517872/misskey.svg",
+                    "alt": "Misskey@Misskey.io",
+                    "link": "https://misskey.io/@TanukiUdon_ZERO"
+                },
+                {
+                    "type": "image-button",
+                    "image": "https://www.svgrepo.com/show/512317/github-142.svg",
+                    "alt": "GitHub",
+                    "link": "https://github.com/TanukiUdon-ZERO"
+                }
+            ]
+        }
+    ]
+}
