@@ -1,9 +1,22 @@
 const textDelay = 24;
+const touchMoveThreshold = 10;
 let skipTextAnimation = false;
+let touchStartX = 0;
+let touchStartY = 0;
+let touchMoved = false;
 
 document.addEventListener("DOMContentLoaded", loadProfile);
 document.addEventListener("click", skipAllTextAnimation);
-document.addEventListener("touchstart", skipAllTextAnimation, {
+document.addEventListener("touchstart", handleTouchStart, {
+    passive: true
+});
+document.addEventListener("touchmove", handleTouchMove, {
+    passive: true
+});
+document.addEventListener("touchend", handleTouchEnd, {
+    passive: true
+});
+document.addEventListener("touchcancel", resetTouchState, {
     passive: true
 });
 document.addEventListener("contextmenu", (event) => {
@@ -13,6 +26,36 @@ document.addEventListener("contextmenu", (event) => {
 
 function skipAllTextAnimation() {
     skipTextAnimation = true;
+}
+
+function handleTouchStart(event) {
+    const touch = event.touches[0];
+
+    touchStartX = touch.clientX;
+    touchStartY = touch.clientY;
+    touchMoved = false;
+}
+
+function handleTouchMove(event) {
+    const touch = event.touches[0];
+    const movedX = Math.abs(touch.clientX - touchStartX);
+    const movedY = Math.abs(touch.clientY - touchStartY);
+
+    if (movedX > touchMoveThreshold || movedY > touchMoveThreshold) {
+        touchMoved = true;
+    }
+}
+
+function handleTouchEnd() {
+    if (!touchMoved) {
+        skipAllTextAnimation();
+    }
+
+    resetTouchState();
+}
+
+function resetTouchState() {
+    touchMoved = false;
 }
 
 async function loadProfile() {
