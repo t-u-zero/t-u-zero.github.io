@@ -509,6 +509,10 @@ h1 {
 }
 
 @media (max-width: 680px) {
+    body {
+        font-size: 1.5rem;
+    }
+
     .command-header,
     main,
     .command-footer {
@@ -516,52 +520,136 @@ h1 {
     }
 
     .text-progress-indicator {
-        top: 12px;
-        right: 12px;
+        top: 14px;
+        right: 14px;
+    }
+
+    .text-progress-ring {
+        width: 87px;
+        height: 87px;
+    }
+
+    .text-progress-ring::before {
+        width: 66px;
+        height: 66px;
+    }
+
+    .text-progress-percent {
+        font-size: 1.02rem;
     }
 
     .command-header {
         align-items: flex-start;
         flex-direction: column;
-        gap: 16px;
-        padding: 18px 0;
+        gap: 24px;
+        padding: 27px 0;
+    }
+
+    .brand-lockup {
+        gap: 21px;
+    }
+
+    .brand-mark {
+        width: 66px;
+        height: 66px;
+        font-size: 1.2rem;
+    }
+
+    .brand-lockup strong {
+        font-size: 1.425rem;
+    }
+
+    .brand-lockup small,
+    .command-nav,
+    .eyebrow,
+    .hero-status,
+    .data-loading,
+    .command-footer {
+        font-size: 1.08rem;
     }
 
     .command-nav {
-        gap: 16px;
+        gap: 24px;
     }
 
     .hero-panel {
-        grid-template-columns: 1fr;
-        gap: 28px;
-        padding-top: 52px;
+        gap: 42px;
+        padding-top: 78px;
+    }
+
+    h1 {
+        font-size: clamp(4.5rem, 15vw, 11.25rem);
+    }
+
+    .profile-section h3,
+    .profile-box h3 {
+        font-size: 1.875rem;
     }
 
     .hero-scan {
-        min-height: 110px;
+        min-height: 165px;
+        padding: 27px;
     }
 
     .profile-section {
-        padding: 20px;
+        padding: 30px;
+    }
+
+    .profile-section h2 {
+        font-size: 2.325rem;
+    }
+
+    .profile-entry {
+        padding: 21px 0;
+    }
+
+    .profile-entry dt {
+        font-size: 1.17rem;
     }
 
     .profile-box.has-box-image {
         grid-template-columns: 1fr;
     }
 
+    .profile-box {
+        gap: 12px;
+        margin-top: 27px;
+        padding: 30px;
+    }
+
     .profile-box-image img {
-        max-height: 220px;
+        max-height: 330px;
+    }
+
+    .profile-button {
+        padding: 12px 24px;
+        font-size: 1.17rem;
+    }
+
+    .social-grid {
+        gap: 18px;
+    }
+
+    .social-link {
+        width: 108px;
+        height: 108px;
+    }
+
+    .social-link img,
+    .social-fallback {
+        width: 57px;
+        height: 57px;
     }
 
     .profile-entry {
         grid-template-columns: 1fr;
-        gap: 4px;
+        gap: 6px;
     }
 
     .command-footer {
         align-items: flex-start;
         flex-direction: column;
-        gap: 8px;
+        gap: 12px;
     }
 }
 
