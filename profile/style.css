@@ -39,6 +39,55 @@ body::before {
     mix-blend-mode: screen;
 }
 
+.text-progress-indicator {
+    position: fixed;
+    z-index: 1000;
+    top: 18px;
+    right: 18px;
+    pointer-events: none;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.text-progress-indicator.is-complete {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.text-progress-ring {
+    display: grid;
+    width: 58px;
+    height: 58px;
+    place-items: center;
+    border: 2px solid rgba(216, 198, 90, 0.18);
+    border-top-color: var(--yellow-bright);
+    border-right-color: var(--yellow);
+    border-radius: 50%;
+    background: conic-gradient(
+        var(--yellow-bright) var(--progress-angle, 0deg),
+        rgba(216, 198, 90, 0.14) var(--progress-angle, 0deg)
+    );
+    box-shadow: 0 0 18px rgba(216, 198, 90, 0.22);
+    transform: rotate(-90deg);
+}
+
+.text-progress-ring::before {
+    position: absolute;
+    width: 44px;
+    height: 44px;
+    content: "";
+    border-radius: 50%;
+    background: var(--black);
+}
+
+.text-progress-percent {
+    position: relative;
+    z-index: 1;
+    color: var(--yellow-bright);
+    font-family: Consolas, monospace;
+    font-size: 0.68rem;
+    transform: rotate(90deg);
+}
+
 a {
     color: inherit;
 }
@@ -464,6 +513,11 @@ h1 {
     main,
     .command-footer {
         width: min(100% - 28px, 1180px);
+    }
+
+    .text-progress-indicator {
+        top: 12px;
+        right: 12px;
     }
 
     .command-header {

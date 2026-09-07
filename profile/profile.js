@@ -4,6 +4,10 @@ let skipTextAnimation = false;
 let touchStartX = 0;
 let touchStartY = 0;
 let touchMoved = false;
+let progressPercent = null;
+let progressRing = null;
+let totalTextCharacters = 1;
+let renderedTextCharacters = 0;
 
 document.addEventListener("DOMContentLoaded", loadProfile);
 document.addEventListener("click", skipAllTextAnimation);
@@ -26,6 +30,8 @@ document.addEventListener("contextmenu", (event) => {
 
 function skipAllTextAnimation() {
     skipTextAnimation = true;
+    renderedTextCharacters = totalTextCharacters;
+    updateProgressIndicator();
 }
 
 function handleTouchStart(event) {
@@ -60,6 +66,7 @@ function resetTouchState() {
 
 async function loadProfile() {
     const content = document.querySelector("#profile-content");
+    createProgressIndicator();
     const config = await fetch("profile-config.json").then((response) => {
         if (!response.ok) {
             throw new Error(`Profile config failed: ${response.status}`);
@@ -67,6 +74,9 @@ async function loadProfile() {
 
         return response.json();
     });
+
+    totalTextCharacters = countProfileText(config);
+    updateProgressIndicator();
 
     document.querySelector("#profile-title").classList.add("reveal-text");
     document.querySelector("#profile-status").classList.add("reveal-text");
@@ -81,6 +91,92 @@ async function loadProfile() {
     for (const sectionData of config.sections) {
         await renderSection(content, sectionData);
     }
+}
+
+function createProgressIndicator() {
+    const indicator = document.createElement("div");
+    const ring = document.createElement("span");
+    const percent = document.createElement("span");
+
+    indicator.className = "text-progress-indicator";
+    indicator.setAttribute("aria-label", "テキスト表示の進捗");
+    ring.className = "text-progress-ring";
+    percent.className = "text-progress-percent";
+    percent.textContent = "0%";
+    ring.appendChild(percent);
+    indicator.appendChild(ring);
+    document.body.appendChild(indicator);
+    progressRing = ring;
+    progressPercent = percent;
+}
+
+function updateProgressIndicator() {
+    if (!progressPercent || !progressRing) {
+        return;
+    }
+
+    const percentage = Math.min(
+        100,
+        Math.round(renderedTextCharacters / totalTextCharacters * 100)
+    );
+
+    progressPercent.textContent = `${percentage}%`;
+    progressRing.style.setProperty("--progress-angle", `${percentage * 3.6}deg`);
+    progressRing.parentElement.classList.toggle(
+        "is-complete",
+        percentage >= 100
+    );
+}
+
+function countProfileText(config) {
+    let total = textLength("プロフィール") +
+        textLength("STATUS: ACTIVE / LOCATION: AOMORI, JP");
+
+    for (const section of config.sections) {
+        total += textLength(`// ${String(section.title).toUpperCase()}`);
+        total += textLength(section.title);
+
+        for (let index = 0; index < section.content.length; index += 1) {
+            const item = section.content[index];
+            const nextItem = section.content[index + 1];
+
+            if (item.type === "title" && nextItem?.type === "text") {
+                total += textLength(item.text) + textLength(nextItem.text);
+                index += 1;
+                continue;
+            }
+
+            total += countItemText(item);
+        }
+    }
+
+    return Math.max(1, total);
+}
+
+function countItemText(item) {
+    if (["title", "text"].includes(item.type)) {
+        return textLength(item.text);
+    }
+
+    if (item.type === "list") {
+        return item.list.reduce((total, value) => total + textLength(value), 0);
+    }
+
+    if (item.type === "box") {
+        return item.contents.reduce((total, value) => total + countBoxItemText(value), 0);
+    }
+
+    return 0;
+}
+
+function countBoxItemText(item) {
+    return ["title2", "text", "button"].includes(item.type)
+        ? textLength(item.text)
+        : 0;
+}
+
+function textLength(value) {
+    return Array.from(String(value)).length;
 }
 
 async function renderSection(parent, sectionData) {
@@ -346,20 +442,29 @@ async function renderBoxItem(parent, item) {
 
 async function typeText(element, text) {
     const fullText = String(text);
+    const characters = Array.from(fullText);
+    let typedCharacters = 0;
 
     element.textContent = "";
     element.classList.add("is-visible");
 
     if (skipTextAnimation) {
         element.textContent = fullText;
+        renderedTextCharacters += characters.length;
+        updateProgressIndicator();
         return;
     }
 
-    for (const character of Array.from(fullText)) {
+    for (const character of characters) {
         element.append(character);
+        typedCharacters += 1;
+        renderedTextCharacters += 1;
+        updateProgressIndicator();
 
         if (skipTextAnimation) {
             element.textContent = fullText;
+            renderedTextCharacters += characters.length - typedCharacters;
+            updateProgressIndicator();
             return;
         }
 
