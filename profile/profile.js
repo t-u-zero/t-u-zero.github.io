@@ -128,11 +128,21 @@ async function renderItem(parent, item) {
 
     if (item.type === "box") {
         const box = document.createElement("article");
+        const boxContent = document.createElement("div");
+
         box.className = "profile-box";
+        boxContent.className = "profile-box-content";
         parent.appendChild(box);
 
+        if (item.image?.url) {
+            renderBoxImage(box, item.image);
+            box.classList.add("has-box-image");
+        }
+
+        box.appendChild(boxContent);
+
         for (const boxItem of item.contents) {
-            await renderBoxItem(box, boxItem);
+            await renderBoxItem(boxContent, boxItem);
         }
 
         return;
@@ -172,6 +182,24 @@ async function renderItem(parent, item) {
         listItem.appendChild(link);
         grid.appendChild(listItem);
     }
+}
+
+function renderBoxImage(box, item) {
+    const imageArea = document.createElement("div");
+    const image = document.createElement("img");
+
+    imageArea.className = "profile-box-image";
+    image.src = item.url;
+    image.alt = item.alt || "";
+    image.loading = "lazy";
+    image.decoding = "async";
+    applyImageSize(image, item);
+    image.addEventListener("error", () => {
+        imageArea.replaceChildren(createImageFallback(item.alt || "IMG"));
+        imageArea.classList.add("is-image-missing");
+    }, { once: true });
+    imageArea.appendChild(image);
+    box.appendChild(imageArea);
 }
 
 function renderImage(parent, item) {
@@ -250,6 +278,11 @@ async function renderBoxItem(parent, item) {
         button.target = "_blank";
         button.rel = "noreferrer";
         button.title = item.alt;
+
+        if (item.color) {
+            button.style.setProperty("--button-color", item.color);
+        }
+
         parent.appendChild(button);
         return typeText(button, item.text);
     }
