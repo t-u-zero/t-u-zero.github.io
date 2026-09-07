@@ -42,9 +42,11 @@ body::before {
 .text-progress-indicator {
     position: fixed;
     z-index: 1000;
-    top: 18px;
-    right: 18px;
+    inset: 0;
+    display: grid;
+    place-items: center;
     pointer-events: none;
+    background: rgba(0, 0, 0, 0.58);
     transition: opacity 0.25s ease, visibility 0.25s ease;
 }
 
@@ -53,10 +55,43 @@ body::before {
     visibility: hidden;
 }
 
+.text-progress-indicator::before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 202px;
+    height: 202px;
+    content: "";
+    border-radius: 50%;
+    background: conic-gradient(
+        transparent 0deg 30deg,
+        var(--cyan, #00e5ff) 30deg 82deg,
+        transparent 82deg 210deg,
+        var(--cyan, #00e5ff) 210deg 262deg,
+        transparent 262deg 360deg
+    );
+    box-shadow: 0 0 18px rgba(0, 229, 255, 0.52);
+    transform: translate(-50%, -50%);
+    -webkit-mask: radial-gradient(
+        farthest-side,
+        transparent calc(100% - 3px),
+        #000 calc(100% - 2px)
+    );
+    mask: radial-gradient(
+        farthest-side,
+        transparent calc(100% - 3px),
+        #000 calc(100% - 2px)
+    );
+    animation: cyan-orbit 3.2s linear infinite;
+    pointer-events: none;
+}
+
 .text-progress-ring {
+    position: relative;
+    z-index: 1;
     display: grid;
-    width: 58px;
-    height: 58px;
+    width: 148px;
+    height: 148px;
     place-items: center;
     border: 2px solid rgba(216, 198, 90, 0.18);
     border-top-color: var(--yellow-bright);
@@ -70,10 +105,41 @@ body::before {
     transform: rotate(-90deg);
 }
 
+.text-progress-ring::after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 174px;
+    height: 174px;
+    content: "";
+    border-radius: 50%;
+    background: conic-gradient(
+        transparent 0deg 30deg,
+        var(--magenta, #ff2bd6) 30deg 82deg,
+        transparent 82deg 210deg,
+        var(--magenta, #ff2bd6) 210deg 262deg,
+        transparent 262deg 360deg
+    );
+    box-shadow: 0 0 16px rgba(255, 43, 214, 0.5);
+    transform: translate(-50%, -50%) rotate(360deg);
+    -webkit-mask: radial-gradient(
+        farthest-side,
+        transparent calc(100% - 3px),
+        #000 calc(100% - 2px)
+    );
+    mask: radial-gradient(
+        farthest-side,
+        transparent calc(100% - 3px),
+        #000 calc(100% - 2px)
+    );
+    animation: progress-orbit 3.2s linear infinite;
+    pointer-events: none;
+}
+
 .text-progress-ring::before {
     position: absolute;
-    width: 44px;
-    height: 44px;
+    width: 116px;
+    height: 116px;
     content: "";
     border-radius: 50%;
     background: var(--black);
@@ -84,7 +150,7 @@ body::before {
     z-index: 1;
     color: var(--yellow-bright);
     font-family: Consolas, monospace;
-    font-size: 0.68rem;
+    font-size: 1.25rem;
     transform: rotate(90deg);
 }
 
@@ -508,6 +574,18 @@ h1 {
     to { opacity: 1; transform: scaleX(1); }
 }
 
+@keyframes progress-orbit {
+    to {
+        transform: translate(-50%, -50%) rotate(-360deg);
+    }
+}
+
+@keyframes cyan-orbit {
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
 @media (max-width: 680px) {
     body {
         font-size: 1.5rem;
@@ -520,22 +598,21 @@ h1 {
     }
 
     .text-progress-indicator {
-        top: 14px;
-        right: 14px;
+        padding: 20px;
     }
 
     .text-progress-ring {
-        width: 87px;
-        height: 87px;
+        width: 148px;
+        height: 148px;
     }
 
     .text-progress-ring::before {
-        width: 66px;
-        height: 66px;
+        width: 116px;
+        height: 116px;
     }
 
     .text-progress-percent {
-        font-size: 1.02rem;
+        font-size: 1.25rem;
     }
 
     .command-header {

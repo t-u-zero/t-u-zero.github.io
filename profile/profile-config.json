@@ -2,7 +2,6 @@
     "sections": [
         {
             "title": "人物",
-            "image": {"url": "https://tanukiudon-zero.github.io/image/banner.jpg"},
             "content": [
                 {"type": "image", "url": "https://tanukiudon-zero.github.io/image/rion_icon.jpg", "size": {"width": 256, "height": 256}},
                 {"type": "title", "text": "名前"},
@@ -28,7 +27,8 @@
                         "プログラミング"
                     ]
                 }
-            ]
+            ],
+            "image": {"url": "https://tanukiudon-zero.github.io/image/banner.jpg"}
         },
         {
             "title": "作成コンテンツ",
