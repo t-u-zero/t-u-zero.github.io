@@ -1,6 +1,16 @@
 const textDelay = 24;
+let skipTextAnimation = false;
 
 document.addEventListener("DOMContentLoaded", loadProfile);
+document.addEventListener("click", skipAllTextAnimation);
+document.addEventListener("contextmenu", (event) => {
+    event.preventDefault();
+    skipAllTextAnimation();
+});
+
+function skipAllTextAnimation() {
+    skipTextAnimation = true;
+}
 
 async function loadProfile() {
     const content = document.querySelector("#profile-content");
@@ -289,11 +299,24 @@ async function renderBoxItem(parent, item) {
 }
 
 async function typeText(element, text) {
+    const fullText = String(text);
+
     element.textContent = "";
     element.classList.add("is-visible");
 
-    for (const character of Array.from(String(text))) {
+    if (skipTextAnimation) {
+        element.textContent = fullText;
+        return;
+    }
+
+    for (const character of Array.from(fullText)) {
         element.append(character);
+
+        if (skipTextAnimation) {
+            element.textContent = fullText;
+            return;
+        }
+
         await wait(textDelay);
     }
 }
