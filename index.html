@@ -3,59 +3,75 @@
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="https://content.lifeistech-lesson.jp/Curriculum_materials/Original/global.css" type="text/css">
-        <link rel="stylesheet" href="https://t-u-zero.github.io/style.css" type="text/css">
+        <link rel="stylesheet" href="style.css" type="text/css">
         <script src="initialize.js"></script>
-        <link rel="icon" href="https://t-u-zero.github.io/image/Site_icon.png">
+        <link rel="icon" href="https://tanukiudon-zero.github.io/image/Site_icon.png">
         <title>鳩/てぃの公式サイト</title>
-    
+
         <!-- Open Graph -->
         <meta property="og:title" content="てぃの公式サイト" />
-        <meta property="og:description" content="てぃ GitHub支店" />
+        <meta property="og:description" content="てぃ GitHub" />
         <meta property="og:image" content="https://t-u-zero.github.io/image/header.png" />
-        <meta property="og:url" content="https://t-u-zero.github.io/" />
+        <meta property="og:url" content="https://tanukiudon-zero.github.io/" />
         <meta property="og:type" content="website" />
-        
+
         <!-- Twitter Card -->
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="てぃの公式サイト" />
         <meta name="twitter:description" content="てぃ GitHub支店" />
-        <meta name="twitter:image" content="https://t-u-zero.github.io/image/header.png" />
+        <meta name="twitter:image" content="https://tanukiudon-zero.github.io/image/header.png" />
     </head>
-    <body>
+    <body class="home-page">
         <div id="menuButton">☰</div>
         <div id="sideMenu">
             <ul>
-                <li><a href="https://t-u-zero.github.io/">ホーム</a></li>
+                <li><a href="/">ホーム</a></li>
                 <li><a href="profile/">プロフィール</a></li>
                 <li><a href="discord/">Discord</a></li>
             </ul>
         </div>
 
         <header class="hero-header">
+            <div class="hero-grid" aria-hidden="true"></div>
             <div class="overlay">
+                <p class="system-label">T/U NETWORK // PUBLIC TERMINAL</p>
                 <h1 id="title_typewriter"></h1>
+                <p class="hero-subtitle">PERSONAL SITE / CREATIVE OPERATIONS / ONLINE</p>
+                <div class="hero-readout">
+                    <span>NODE 01</span>
+                    <span>STATUS <strong>ONLINE</strong></span>
+                    <span>ACCESS LEVEL PUBLIC</span>
+                </div>
             </div>
         </header>
 
-        <section>
-        <h2>自己紹介</h2>
-            <p id="intro_typewriter">
-        
-            </p>
-        <script src="https://t-u-zero.github.io/java-script/self-Introduction.js"></script>
+        <main class="home-main">
+        <section class="command-section intro-section">
+            <div class="section-heading">
+                <p class="section-code">01 // OPERATOR PROFILE</p>
+                <h2>自己紹介</h2>
+            </div>
+            <p id="intro_typewriter"></p>
+        <script src="java-script/self-Introduction.js"></script>
         </section>
-        
-        <section>
-            <h2>Discordサーバー</h2>
-            <p>運営しているDiscordサーバー</p>
+
+        <section class="command-section discord-section">
+            <div class="section-heading">
+                <p class="section-code">02 // ACTIVE CHANNELS</p>
+                <h2>Discordサーバー</h2>
+            </div>
+            <p class="section-lead">運営しているDiscordサーバー</p>
             <div id="discord_servers_typewriter"></div>
-            <script src="https://t-u-zero.github.io/java-script/discord_servers.js"></script>
+            <script src="java-script/discord_servers.js"></script>
         </section>
+        </main>
         <!--フッター-->
-        <footer>
-            <a href=" https://github.com/t-u-zero/ "target=_blank">@t-u-zero</a>によって作成されました
+        <footer class="site-footer">
+            <span>TRANSMISSION SECURE</span>
+            <a href="https://github.com/tanukiudon-zero" target="_blank">@TanukiUdon_ZERO</a>
+            <span>© BluePision</span>
         </footer>
-        <script src="https://t-u-zero.github.io/java-script/menu.js"></script>
-        <script src="https://t-u-zero.github.io/java-script/title.js"></script>
+        <script src="java-script/menu.js"></script>
+        <script src="java-script/title.js"></script>
     </body>
 </html>

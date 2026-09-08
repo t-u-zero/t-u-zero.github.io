@@ -4,20 +4,26 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://content.lifeistech-lesson.jp/Curriculum_materials/Original/global.css" type="text/css">
     <link rel="stylesheet" href="style.css" type="text/css">
-    <link rel="stylesheet" href="https://t-u-zero.github.io/404.css" type="text/css">
+    <link rel="stylesheet" href="404.css" type="text/css">
     <script src="initialize.js"></script>
     <link rel="icon" href="https://t-u-zero.github.io/image/Site_icon.png">
     <title>404 - てぃの公式サイト</title>
   </head>
-  <body>
+  <body class="error-page">
     <div class="container">
-      <h1>404 - このページは存在しません</h1>
-      <p>ごめんね、本当に存在しないか作成中のURLだと思う</p>
-      <a href="/">戻る</a>
+      <p class="error-code">ERROR // 404</p>
+      <h1>このページは存在しません</h1>
+      <p class="error-message">ごめんね、本当に存在しないか作成中のURLだと思う</p>
+      <div class="error-readout">
+        <span>REQUEST STATUS</span>
+        <strong>NOT FOUND</strong>
+      </div>
+      <a class="return-link" href="/">ホームへ戻る</a>
     </div>
 
-    <footer>
-      <a href=" https://github.com/t-u-zero/ "target=_blank">@t-u-zero</a>によって作成されました
+    <footer class="error-footer">
+      <span>TRANSMISSION INTERRUPTED</span>
+      <a href="https://github.com/t-u-zero/" target="_blank">@t-u-zero</a>
     </footer>
   </body>
 </html>

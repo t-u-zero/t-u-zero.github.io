@@ -1,90 +1,79 @@
+:root {
+    --black: #080a08;
+    --panel: rgba(17, 22, 17, 0.9);
+    --olive: #87964a;
+    --yellow: #d8c65a;
+    --yellow-bright: #f2df68;
+    --cyan: #54d8d0;
+    --muted: #8b9480;
+    --line: rgba(216, 198, 90, 0.3);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-    background: linear-gradient(to bottom, #fffaf0, #f0e68c);
-    font-family: "M PLUS Rounded 1c", sans-serif;
-    color: #333;
+    min-width: 320px;
     margin: 0;
-    padding: 0;
+    color: #d9ddc8;
+    background:
+        linear-gradient(rgba(216, 198, 90, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(216, 198, 90, 0.025) 1px, transparent 1px),
+        var(--black);
+    background-size: 34px 34px;
+    font-family: "Trebuchet MS", "Yu Gothic", sans-serif;
+    line-height: 1.7;
 }
 
-header.ch7 {
-    background-color: #8fbc8f;
-    color: white;
-    padding: 40px 20px;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-}
-
-.hero-header {
-    position: relative;
-    width: 100%;
-    height: 100vh; /* 画面いっぱい */
-    background-image: url("image/header.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    animation: fadeUp 1.5s ease-out forwards;
-
-    -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
-    mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
-}
-
-.overlay {
-    position: absolute;
-    text-align: center;
-    color: #616161;
-    z-index: 1;
-    padding: 20px;
-}
-
-.overlay h1 {
-    font-size: 6rem;
-    margin-bottom: 10px;
-    text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
-}
-
-.overlay p {
-    font-size: 1.5rem;
-    text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+body::before {
+    position: fixed;
+    z-index: 10;
+    inset: 0;
+    pointer-events: none;
+    content: "";
+    background: repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.018) 0, rgba(255, 255, 255, 0.018) 1px, transparent 1px, transparent 5px);
+    mix-blend-mode: screen;
 }
 
 #menuButton {
     position: fixed;
-    top: 20px;
-    left: 20px;
-    width: 100px;
-    height: 100px;
-    background: #444;
-    color: #fff;
-    font-size: 48px;
-    border-radius: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    z-index: 100;
+    top: 18px;
+    left: 18px;
+    display: grid;
+    width: 48px;
+    height: 48px;
+    place-items: center;
+    border: 1px solid var(--yellow);
+    color: var(--yellow-bright);
+    background: rgba(8, 10, 8, 0.82);
+    font-size: 1.35rem;
     cursor: pointer;
-    z-index: 1100;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    transition: background 0.3s ease;
+    transition: background 0.2s, color 0.2s;
 }
 
 #menuButton:hover {
-    background: #666;
+    background: var(--yellow);
+    color: var(--black);
 }
 
 #sideMenu {
     position: fixed;
+    z-index: 90;
     top: 0;
-    left: -260px;
-    width: 240px;
+    left: -280px;
+    width: 260px;
     height: 100%;
-    background: rgba(30, 30, 40, 0.95);
-    color: #fff;
-    transition: left 0.4s ease;
-    z-index: 1000;
-    padding-top: 80px;
-    box-shadow: 4px 0 12px rgba(0,0,0,0.4);
+    padding-top: 84px;
+    border-right: 1px solid var(--line);
+    background: rgba(8, 10, 8, 0.97);
+    box-shadow: 12px 0 30px rgba(0, 0, 0, 0.45);
+    transition: left 0.3s ease;
 }
 
 #sideMenu.open {
@@ -92,163 +81,271 @@ header.ch7 {
 }
 
 #sideMenu ul {
+    display: grid;
+    gap: 8px;
+    padding: 0 18px;
+    margin: 0;
     list-style: none;
-    padding: 0;
-    margin: 0;
-    padding-top: 80px;
 }
+
 #sideMenu li {
-    padding: 16px 24px;
-    font-size: 1.5em;
+    padding: 0;
 }
+
 #sideMenu a {
-    color: #fff;
+    display: block;
+    padding: 12px 14px;
+    border-left: 3px solid transparent;
+    color: var(--muted);
     text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s ease;
+    font-family: Consolas, monospace;
 }
+
 #sideMenu a:hover {
-    color: #ffd86b;
+    border-left-color: var(--yellow-bright);
+    color: var(--yellow-bright);
+    background: rgba(216, 198, 90, 0.08);
 }
 
-#intro_typewriter {
-    white-space: pre-line;
-    font-size: 1.3em;
-    color: #4b0082; /* 魔法っぽい紫 */
-    text-shadow: 1px 1px 4px rgba(75, 0, 130, 0.4);
-    animation: fadeUp 1.5s ease-out forwards;
+.hero-header {
+    position: relative;
+    display: grid;
+    min-height: min(760px, 88vh);
+    overflow: hidden;
+    place-items: center;
+    border-bottom: 1px solid var(--line);
+    background:
+        linear-gradient(90deg, rgba(8, 10, 8, 0.92), rgba(8, 10, 8, 0.34) 58%, rgba(8, 10, 8, 0.82)),
+        linear-gradient(0deg, var(--black), transparent 35%),
+        url("image/header.png") center / cover;
 }
 
-h1 {
-    font-size: 2.5em;
-    line-height: 1.4;
+.hero-header::after {
+    position: absolute;
+    inset: 0;
+    content: "";
+    border: 1px solid rgba(216, 198, 90, 0.18);
+    box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.6);
+    pointer-events: none;
+}
+
+.hero-grid {
+    position: absolute;
+    inset: 0;
+    opacity: 0.3;
+    background: linear-gradient(90deg, transparent 49.8%, var(--yellow) 50%, transparent 50.2%), linear-gradient(0deg, transparent 49.8%, var(--yellow) 50%, transparent 50.2%);
+    background-size: 220px 220px;
+    mask-image: linear-gradient(90deg, transparent, #000 25%, #000 75%, transparent);
+}
+
+.overlay {
+    position: relative;
+    z-index: 2;
+    width: min(1060px, calc(100% - 48px));
+    padding: 90px 0 50px;
+}
+
+.system-label,
+.section-code,
+.hero-subtitle,
+.hero-readout,
+.site-footer {
+    color: var(--muted);
+    font-family: Consolas, monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+}
+
+.system-label {
+    margin: 0 0 24px;
+    color: var(--yellow);
+}
+
+.overlay h1 {
+    max-width: 850px;
     margin: 0;
-    animation: fadeUp 1.5s ease-out forwards;
+    color: var(--yellow-bright);
+    font-size: clamp(3.5rem, 11vw, 9rem);
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    line-height: 0.95;
+    text-shadow: 0 0 32px rgba(242, 223, 104, 0.2);
 }
 
-section {
-    padding: 30px;
-    border-bottom: 1px solid #ccc;
+.hero-subtitle {
+    margin: 26px 0 0;
+    color: #e6e8d4;
 }
 
-h2 {
-    color: #2e8b57;
-    font-size: 1.8em;
-    margin-bottom: 10px;
-    text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
-    animation: fadeUp 1.5s ease-out forwards;
+.hero-readout {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 28px;
+    margin-top: 54px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
 }
 
-p {
-    font-size: 1.2em;
-    line-height: 1.6;
-    animation: fadeUp 1.5s ease-out forwards;
+.hero-readout strong {
+    color: var(--cyan);
 }
 
-div {
-    font-size: 1.2em;
-    line-height: 1.6;
-    animation: fadeUp 1.5s ease-out forwards;
+.home-main {
+    width: min(1060px, calc(100% - 48px));
+    margin: 0 auto;
 }
 
-a {
-    color: #1e90ff;
+.command-section {
+    position: relative;
+    padding: 74px 0;
+    border-bottom: 1px solid var(--line);
+}
+
+.command-section::after {
+    position: absolute;
+    right: 0;
+    bottom: -3px;
+    width: 90px;
+    height: 5px;
+    content: "";
+    background: repeating-linear-gradient(135deg, var(--yellow) 0 9px, var(--black) 9px 18px);
+}
+
+.section-heading {
+    display: grid;
+    grid-template-columns: 230px 1fr;
+    gap: 24px;
+    align-items: baseline;
+    margin-bottom: 28px;
+}
+
+.section-code {
+    margin: 0;
+    color: var(--yellow);
+}
+
+.command-section h2 {
+    margin: 0;
+    color: var(--yellow-bright);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 400;
+    letter-spacing: 0.06em;
+}
+
+.command-section p {
+    max-width: 760px;
+    margin-bottom: 0;
+    color: #d9ddc8;
+    font-size: 1.15rem;
+}
+
+.section-lead {
+    color: var(--muted) !important;
+    font-family: Consolas, monospace;
+    font-size: 0.9rem !important;
+}
+
+#discord_servers_typewriter {
+    display: grid;
+    gap: 12px;
+    margin-top: 28px;
+    color: var(--yellow-bright);
+}
+
+#discord_servers_typewriter a {
+    display: block;
+    padding: 16px 18px;
+    border: 1px solid var(--line);
+    color: var(--yellow-bright);
+    background: var(--panel);
+    text-decoration: none;
+    transition: border-color 0.2s, transform 0.2s, background 0.2s;
+}
+
+#discord_servers_typewriter a:hover {
+    border-color: var(--yellow-bright);
+    background: rgba(135, 150, 74, 0.14);
+    transform: translateX(8px);
+}
+
+.site-footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    width: min(1060px, calc(100% - 48px));
+    padding: 24px 0 36px;
+    margin: 0 auto;
+    border-top: 1px solid var(--line);
+}
+
+.site-footer a {
+    color: var(--yellow-bright);
     text-decoration: none;
 }
 
-a:hover {
-    text-decoration: underline;
-    color: #ff4500;
-}
-
-footer {
-    background-color: #eee;
-    text-align: center;
-    padding: 20px;
-    font-size: 0.9em;
-    color: #555;
-}
-
-@media (max-aspect-ratio: 3/4), (orientation: portrait) {
-    #menuButton {
-        position: fixed;
-        top: 20px;
-        left: 20px;
-        width: 100px;
-        height: 100px;
-        background: #444;
-        color: #fff;
-        font-size: 48px;
-        border-radius: 24px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        z-index: 1100;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-        transition: background 0.3s ease;
-    }
-
-    #menuButton:hover {
-        background: #666;
-    }
-
-    .overlay h1 {
-        font-size: 2.5em;
-        line-height: 1.4;
-        margin: 0;
-        animation: fadeUp 1.5s ease-out forwards;
-    }
-}
-
-@media (min-aspect-ratio: 4/3), (orientation: landscape) {
+@media (min-width: 760px) {
     #menuButton {
         display: none;
     }
+
     #sideMenu {
-        position: sticky;
-        left: 0;
+        position: absolute;
         top: 0;
+        left: 0;
         width: 100%;
         height: auto;
-        background: var(--panel, rgba(30, 30, 40, 0.95));
         padding: 0;
+        border: 0;
+        background: rgba(8, 10, 8, 0.72);
         box-shadow: none;
-        z-index: 50;
     }
 
     #sideMenu ul {
         display: flex;
-        gap: 32px;
-        list-style: none;
-        margin: 0;
-        padding: 8px 16px;
-    }
-
-    #sideMenu li {
-        padding: 0;
-        font-size: 1.5em;
+        justify-content: center;
+        gap: 8px;
+        padding: 12px 24px;
     }
 
     #sideMenu a {
-        color: white;
-        text-decoration: none;
-        padding: 8px 12px;
-        font-weight: 500;
-    }
-
-    #sideMenu.open {
-        left: 0; /* 無意味になるが、念のため残してOK */
+        padding: 8px 14px;
     }
 }
 
-@keyframes fadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
+@media (max-width: 680px) {
+    .hero-header {
+        min-height: 720px;
     }
-    to {
-        opacity: 1;
-        transform: translateY(0);
+
+    .overlay,
+    .home-main,
+    .site-footer {
+        width: min(100% - 32px, 1060px);
+    }
+
+    .overlay {
+        padding-top: 120px;
+    }
+
+    .section-heading {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .command-section {
+        padding: 54px 0;
+    }
+
+    .site-footer {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
     }
 }
