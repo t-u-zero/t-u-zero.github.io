@@ -13,11 +13,6 @@ const sitePages = [
         id: "manual",
         label: "Mod Manual",
         path: "mod-manual/"
-    },
-    {
-        id: "wiki",
-        label: "Wiki",
-        path: "wiki/"
     }
 ];
 
